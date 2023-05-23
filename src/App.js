@@ -1,18 +1,29 @@
-import { Route, Routes } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import Mission from './InnerPages/mission';
-import MyProfile from './InnerPages/profile';
-import Rocket from './InnerPages/rocketPages';
+import './App.css';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Rockets from './Routes/rockets';
+import Missions from './Routes/missions';
+import Myprofile from './Routes/profile';
+
+import { getMissions } from './redux/mission/missionSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMissions());
+  }, [dispatch]);
+
   return (
     <>
-      <Navigation />
-      <div className="container">
+      <div className="App">
+        <Header />
         <Routes>
-          <Route path="/rockets" element={<Rocket />} />
-          <Route path="/missions" element={<Mission />} />
-          <Route path="/profile" element={<MyProfile />} />
+          <Route path="/" element={<Rockets />} />
+          <Route path="categories" element={<Missions />} />
+          <Route path="myprofile" element={<Myprofile />} />
         </Routes>
       </div>
     </>

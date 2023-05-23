@@ -1,14 +1,20 @@
+import React from 'react';
+import Navbar from './Navbar';
 import logo from '../assets/logo.png';
-import styles from '../styles/Header.module.css';
 
-function Header() {
+export default function Header() {
   return (
-    <header className={styles.heading}>
-      <div>
-        <img src={logo} alt="logo" />
-        <h1>Space Travelers&apos; Hub</h1>
+    <nav>
+      <div className="header navcontainer">
+        <div className="headerlogo navcontainer">
+          <img src={logo} alt="spacehub" className="logoimg" />
+          <h2>Space Travelers&apos; Hub</h2>
+        </div>
+        <div className="navcontainer">
+          <Navbar />
+        </div>
       </div>
-    </header>
+      <hr className="hr" />
+    </nav>
   );
 }
-export default Header;
