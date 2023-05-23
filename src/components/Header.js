@@ -8,15 +8,6 @@ function Header() {
         <img src={logo} alt="logo" />
         <h1>Space Travelers&apos; Hub</h1>
       </div>
-      <nav>
-        <ul className={styles.navbar}>
-          <li>Rockets</li>
-          <li>Missons</li>
-          <li className={styles.navbarItem} />
-          <li>My Profile</li>
-        </ul>
-      </nav>
-
     </header>
   );
 }
