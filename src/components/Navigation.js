@@ -3,12 +3,13 @@
 import './Navigation.css';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Header from './Header';
 
 function Navigation() {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        Logo
+        <Header />
       </Link>
       <ul>
         <CustomLink to="/rockets">Rockets</CustomLink>

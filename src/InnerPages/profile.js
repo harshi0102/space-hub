@@ -1,6 +1,7 @@
-import myProfileContainer from '../components/myProfile/myProfile';
+import MyProfileContainer from '../components/myProfile/myProfile';
 
-function Profile() {
-  return <myProfileContainer />;
+function MyProfile() {
+  return <MyProfileContainer />;
 }
-export default Profile;
+
+export default MyProfile;

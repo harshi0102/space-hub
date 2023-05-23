@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Mission from './InnerPages/mission';
-import Profile from './InnerPages/profile';
-import Rocket from './InnerPages/rocket';
+import MyProfile from './InnerPages/profile';
+import Rocket from './InnerPages/rocketPages';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/rockets" element={<Rocket />} />
           <Route path="/missions" element={<Mission />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<MyProfile />} />
         </Routes>
       </div>
     </>

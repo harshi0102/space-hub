@@ -9,7 +9,7 @@ function Rockets() {
     if (!isLoading) {
       dispatch(fetchRockets());
     }
-  }, [isLoading]);
+  }, [isLoading, dispatch]);
 
   return (
     <div>
