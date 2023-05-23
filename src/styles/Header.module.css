@@ -1,0 +1,38 @@
+.heading {
+  background-color: white;
+  border-bottom: 1.5px solid grey;
+  padding: 0 26px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.heading img {
+  width: 81px;
+  height: 69px;
+  margin-top: 14px;
+}
+
+.heading div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.heading ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 23px;
+}
+
+.heading li {
+  list-style: none;
+  color: darkblue;
+}
+
+.navbarItem {
+  border-left: 2px solid rgb(173, 173, 176);
+}
