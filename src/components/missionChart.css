@@ -13,13 +13,13 @@
   font-size: 16px;
 }
 
-.description {
+.desc {
   font-size: 14px;
   color: #3b3e42;
   margin-bottom: 12px;
 }
 
-.mission-btn {
+.missionbutton {
   width: auto;
   text-align: center;
 }

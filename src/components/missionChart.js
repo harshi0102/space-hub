@@ -11,7 +11,7 @@ function MissionChart() {
     <tr className="main" key={mission.mission_id}>
       <td className="name">{mission.mission_name}</td>
       <td>
-        <p className="description">{mission.description}</p>
+        <p className="desc">{mission.description}</p>
       </td>
       <td className="missionbutton">
         <MissionMarker isReserved={!!mission.reserved} />
