@@ -13,10 +13,10 @@ function MissionChart() {
       <td>
         <p className="description">{mission.description}</p>
       </td>
-      <td className="mission-btn">
+      <td className="missionbutton">
         <MissionMarker isReserved={!!mission.reserved} />
       </td>
-      <td className="mission-btn">
+      <td className="missionbutton">
         <MissionMarker isReserved={!!mission.reserved} />
       </td>
     </tr>
