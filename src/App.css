@@ -52,6 +52,70 @@
   border: 0.1px solid lightgray;
 }
 
+.main {
+  background-color: white !important;
+}
+
+.main > div {
+  margin-top: 15px;
+}
+
+.RocketSection {
+  padding: 0 2.5rem;
+}
+
+.RocketSection > div {
+  height: 250px;
+  text-align: left;
+}
+
+.rocketlogoimage > img {
+  width: 250px;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  background-color: #26a69a;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  margin-right: 6px;
+  padding: 0.1rem;
+}
+
+.rockettitle{
+  margin-top: -0.1%;
+  color: #383e4a;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+.rockettext {
+  font-weight: 300;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  color: rgb(62, 62, 62);
+}
+
+.cancelnow,
+.reservenow {
+  background-color: #0290ff;
+  border: none;
+  padding: 0.5rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cancelnow:hover,
+.reservenow:hover {
+  background-color: #3ea4f1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -81,4 +145,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.rocketbody > tr > td {
+  border: 2px solid rgb(234, 231, 231);
+  color: rgb(64, 62, 62);
+  padding: 15px 10px 15px 10px;
 }
