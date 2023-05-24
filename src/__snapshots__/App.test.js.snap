@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App snapshots header renders correctly 1`] = `
+<header
+  className="heading"
+>
+  <div>
+    <img
+      alt="logo"
+      src="logo.png"
+    />
+    <h1>
+      Space Travelers' Hub
+    </h1>
+  </div>
+  <nav>
+    <ul
+      className="navbar"
+    >
+      <li>
+        <a
+          aria-current="page"
+          className="active"
+          href="/"
+          onClick={[Function]}
+          style={
+            Object {
+              "textDecoration": "underline",
+            }
+          }
+        >
+          Rockets
+        </a>
+      </li>
+      <li>
+        <a
+          className=""
+          href="/missions"
+          onClick={[Function]}
+          style={
+            Object {
+              "textDecoration": "none",
+            }
+          }
+        >
+          Missions
+        </a>
+      </li>
+      <li
+        className="listitem"
+      />
+      <li>
+        <a
+          className=""
+          href="/profile"
+          onClick={[Function]}
+          style={
+            Object {
+              "textDecoration": "none",
+            }
+          }
+        >
+          My Profile
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+`;
+
+exports[`App snapshots profile renders correctly 1`] = `
+<div
+  className="profiledata"
+>
+  <div
+    className="eachprofiledata"
+  >
+    <p>
+      My Missions
+    </p>
+    <table
+      className="profilesection"
+    />
+  </div>
+  <div
+    className="eachprofiledata"
+  >
+    <p>
+      My Rockets
+    </p>
+    <table
+      className="profilesection"
+    />
+  </div>
+</div>
+`;
