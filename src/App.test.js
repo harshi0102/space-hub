@@ -6,7 +6,7 @@ import { store } from './redux/store';
 
 // Component imports
 import Header from './components/Header';
-import Profile from './components/MyProfile';
+import MyProfile from './components/myProfile';
 
 // Snapshots for Header and Profile components
 describe('App snapshots', () => {
@@ -25,7 +25,7 @@ describe('App snapshots', () => {
     const profile = renderer
       .create(
         <Provider store={store}>
-          <Profile page="/profile">Profile Page</Profile>
+          <MyProfile page="/profile">Profile Page</MyProfile>
         </Provider>,
       )
       .toJSON();
@@ -46,7 +46,7 @@ describe('Render Components', () => {
   it('renders Profile component', () => {
     render(
       <Provider store={store}>
-        <Profile />
+        <MyProfile />
       </Provider>,
     );
   });
