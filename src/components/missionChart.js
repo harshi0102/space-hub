@@ -1,34 +1,39 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectMissions } from '../redux/mission/missionSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { missionUpdated, selectMissions } from '../redux/mission/missionSlice';
 import MissionMarker from './missionMarker';
-import './missionChart.css';
+import MissionButton from './missionBtn';
+import styles from '../styles/missionChart.module.css';
 
 function MissionChart() {
   const missions = useSelector(selectMissions);
+  const dispatch = useDispatch();
 
   const renderRows = () => missions.map((mission) => (
-    <tr className="main" key={mission.mission_id}>
-      <td className="name">{mission.mission_name}</td>
+    <tr key={mission.mission_id} className={styles.main}>
+      <td className={styles.name}>{mission.mission_name}</td>
       <td>
-        <p className="desc">{mission.description}</p>
+        <p className={styles.desc}>{mission.description}</p>
       </td>
-      <td className="missionbutton">
+      <td className={styles.rows}>
         <MissionMarker isReserved={!!mission.reserved} />
       </td>
-      <td className="missionbutton">
-        <MissionMarker isReserved={!!mission.reserved} />
+      <td className={styles.rows}>
+        <MissionButton
+          isReserved={!!mission.reserved}
+          onClick={() => dispatch(missionUpdated(mission.mission_id))}
+        />
       </td>
     </tr>
   ));
 
   return (
-    <table className="rows">
+    <table className={styles.rows}>
       <colgroup>
-        <col className="first" />
-        <col className="second" />
-        <col className="third" />
-        <col className="fourth" />
+        <col className={styles.first} />
+        <col className={styles.second} />
+        <col className={styles.third} />
+        <col className={styles.fourth} />
       </colgroup>
       <thead>
         <tr>
@@ -38,7 +43,9 @@ function MissionChart() {
           <th> </th>
         </tr>
       </thead>
-      <tbody>{renderRows()}</tbody>
+      <tbody>
+        {renderRows()}
+      </tbody>
     </table>
   );
 }
