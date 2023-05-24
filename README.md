@@ -110,9 +110,9 @@ npx hint . and npx stylelint "\*_/_.{css,scss}" , npx eslint . and npm test
 
 👤 **Vanina**
 
-- GitHub: [](https://github.com/)
-- Twitter: [](https://twitter.com/)
-- LinkedIn: [](https://www.linkedin.com/in//)
+- GitHub: [](https://github.com/vanina123)
+- Twitter: [](https://twitter.com/DufeVanina)
+- LinkedIn: [](https://www.linkedin.com/in/larissa-vanina)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
