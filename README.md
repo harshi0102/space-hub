@@ -110,7 +110,7 @@ npx hint . and npx stylelint "\*_/_.{css,scss}" , npx eslint . and npm test
 - Twitter: [@harshika0102me](https://twitter.com/harshika0102me)
 - LinkedIn: [@harshikagovind](https://www.linkedin.com/in/harshikagovind/)
 
-👤 **Vanina**
+👤 **Nana Vanina**
 
 - GitHub: [](https://github.com/vanina123)
 - Twitter: [](https://twitter.com/DufeVanina)
