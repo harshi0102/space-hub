@@ -147,12 +147,6 @@
   }
 }
 
-.rocketbody > tr > td {
-  border: 2px solid rgb(234, 231, 231);
-  color: rgb(64, 62, 62);
-  padding: 15px 10px 15px 10px;
-}
-
 .missioncontainer {
   width: 100%;
 }
@@ -183,4 +177,14 @@
 
 .profilecontainer > div {
   width: 50%;
+}
+
+.rocketcontainer {
+  width: 100%;
+}
+
+.rocketitems > tr > td {
+  border: 2px solid rgb(234, 231, 231);
+  color: rgb(64, 62, 62);
+  padding: 15px 10px 15px 10px;
 }
