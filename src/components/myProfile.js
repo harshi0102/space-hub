@@ -1,40 +1,38 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { filterReservedMissions } from '../redux/mission/missionSlice';
+import styles from '../styles/mission.module.css';
 
-export default function MyProfile() {
-  const reservedMissions = useSelector(filterReservedMissions);
+function MyProfile() {
+  const { missions } = useSelector((store) => store.missions);
+  const bookedMissions = missions.filter((mission) => mission.reserved === true);
 
-  const rockets = useSelector((state) => state.rockets.rockets);
-  const reservedRockets = rockets.filter((rocket) => rocket.reserved);
+  const Rockets = useSelector((store) => store.rocket.rocket);
+  const bookedRockets = Rockets.filter((rocket) => rocket.reserved === true);
+
   return (
-    <div className="profilecontainer">
-      <div>
-        <h3>My Missions</h3>
-        <div className="missioncontainer">
-          <ul className="showmissions">
-            {reservedMissions.map((e) => (
-              <li key={e.mission_id} className="showitem">
-                {e.mission_name}
-              </li>
-            ))}
-          </ul>
-        </div>
+    <div className={styles.profiledata}>
+      <div className={styles.eachprofiledata}>
+        <p>My Missions</p>
+        <table className={styles.profilesection}>
+          {bookedMissions.map((mission) => (
+            <tr key={mission.id}>
+              <td className={styles.profilesectiontd}>{mission.name}</td>
+            </tr>
+          ))}
+        </table>
       </div>
-      <div>
-        <h3>My Rockets</h3>
-        <div>
-          <table className="rocketcontainer">
-            <tbody className="rocketitems">
-              {reservedRockets.map((rockets) => (
-                <tr key={rockets.id}>
-                  <td>{rockets.name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <div className={styles.eachprofiledata}>
+        <p>My Rockets</p>
+        <table className={styles.profilesection}>
+          {bookedRockets.map((rocket) => (
+            <tr key={rocket.id}>
+              <td className={styles.profilesectiontd}>{rocket.name}</td>
+            </tr>
+          ))}
+        </table>
       </div>
     </div>
   );
 }
+
+export default MyProfile;

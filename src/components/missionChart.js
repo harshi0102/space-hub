@@ -1,53 +1,54 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { missionUpdated, selectMissions } from '../redux/mission/missionSlice';
-import MissionMarker from './missionMarker';
-import MissionButton from './missionBtn';
-import styles from '../styles/missionChart.module.css';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { joinMission, leaveMission } from '../redux/mission/missionSlice';
+import styles from '../styles/mission.module.css';
 
-function MissionChart() {
-  const missions = useSelector(selectMissions);
+function MissionChart({ itemProps }) {
   const dispatch = useDispatch();
-
-  const renderRows = () => missions.map((mission) => (
-    <tr key={mission.mission_id} className={styles.main}>
-      <td className={styles.name}>{mission.mission_name}</td>
+  return (
+    <tr className={styles.tablerow}>
+      <td>{itemProps.name}</td>
+      <td>{itemProps.description}</td>
       <td>
-        <p className={styles.desc}>{mission.description}</p>
+        {!itemProps.reserved && (
+          <button className={`${styles.nonMember} ${styles.missionstatus}`} type="button">NOT A MEMBER</button>
+        )}
+        {itemProps.reserved && (
+          <button className={`${styles.member} ${styles.missionstatus}`} type="button">Active Member</button>
+        )}
       </td>
-      <td className={styles.rows}>
-        <MissionMarker isReserved={!!mission.reserved} />
-      </td>
-      <td className={styles.rows}>
-        <MissionButton
-          isReserved={!!mission.reserved}
-          onClick={() => dispatch(missionUpdated(mission.mission_id))}
-        />
+      <td>
+        {!itemProps.reserved && (
+          <button
+            className={`${styles.joinnow} ${styles.joinLeave}`}
+            type="button"
+            onClick={() => { dispatch(joinMission(itemProps.id)); }}
+          >
+            Join Mission
+          </button>
+        )}
+        {itemProps.reserved && (
+          <button
+            className={`${styles.leavenow} ${styles.joinLeave}`}
+            type="button"
+            onClick={() => { dispatch(leaveMission(itemProps.id)); }}
+          >
+            Leave Mission
+          </button>
+        )}
       </td>
     </tr>
-  ));
-
-  return (
-    <table className={styles.rows}>
-      <colgroup>
-        <col className={styles.first} />
-        <col className={styles.second} />
-        <col className={styles.third} />
-        <col className={styles.fourth} />
-      </colgroup>
-      <thead>
-        <tr>
-          <th>Mission</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th> </th>
-        </tr>
-      </thead>
-      <tbody>
-        {renderRows()}
-      </tbody>
-    </table>
   );
 }
 
 export default MissionChart;
+
+MissionChart.propTypes = {
+  itemProps: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    reserved: PropTypes.bool.isRequired,
+  }).isRequired,
+};

@@ -1,67 +1,39 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRockets, reserverockets, cancelrockets } from '../redux/rocket/rocketSlice';
+import { getRockets, reserveRocket } from '../redux/rocket/rocketSlice';
 
 const Rocket = () => {
   const dispatch = useDispatch();
-  const rockets = useSelector((state) => state.rockets.rockets);
-  const status = useSelector((state) => state.rockets.status);
-  const error = useSelector((state) => state.rockets.error);
+  const { rocket, isLoading } = useSelector((state) => state.rocket);
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(getRockets());
-    }
-  }, [status, dispatch]);
-
-  const handleReservation = (rocketId) => {
-    dispatch(reserverockets(rocketId));
-  };
-
-  const onCancel = (rocketId) => {
-    dispatch(cancelrockets(rocketId));
-  };
-  if (status === 'loading') {
-    return <div>Loading...</div>;
-  } if (status === 'failed') {
-    return <div>{error}</div>;
-  }
+    if (isLoading === false) dispatch(getRockets());
+  }, [dispatch, isLoading]);
 
   return (
-    <section className="main">
-      {rockets.map((rocket) => (
-        <div key={rocket.id} className="RocketSection navcontainer">
-          <div className="rocketlogoimage">
-            <img src={rocket.flickr_images} alt={`Rocket ${rocket.name}`} />
+    <div className="rockets-container">
+      {isLoading && rocket.map((rocket) => (
+        <div key={rocket.id} className="rocketsection">
+          <div className="itemimage">
+            <img src={rocket.image} alt={rocket.name} className="rocketimg" />
           </div>
-          <div className="rocketdescription">
-            <h3 className="rockettitle">{rocket.name}</h3>
-            <p className="rockettext">
-              <span className={rocket.reserved === true ? 'show' : 'hidden'}>Reserved</span>
+          <div className="paragraph">
+            <h2 className="rocket-title">{rocket.name}</h2>
+            <p className="rocket-details">
+              {rocket.reserved && <span className="reserved">Reserved</span>}
               {rocket.description}
             </p>
-            {rocket.reserved && (
-              <button
-                type="button"
-                className="cancelnow"
-                onClick={() => onCancel(rocket.id)}
-              >
-                Cancel Reservation
-              </button>
-            )}
-            {!rocket.reserved && (
-              <button
-                type="button"
-                className="reservenow"
-                onClick={() => handleReservation(rocket.id)}
-              >
-                Reserve Rocket
-              </button>
-            )}
+            <button
+              type="button"
+              className={rocket.reserved ? 'cancelnow' : 'reservenow'}
+              onClick={() => dispatch(reserveRocket(rocket.id))}
+            >
+              {rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
+            </button>
           </div>
         </div>
       ))}
-    </section>
+    </div>
   );
 };
 export default Rocket;

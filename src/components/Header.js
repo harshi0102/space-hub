@@ -1,20 +1,32 @@
 import React from 'react';
-import Navbar from './Navbar';
+import { Outlet, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import styles from '../styles/Header.module.css';
 
-export default function Header() {
+function Header() {
+  const navLinkStyles = ({ isActive }) => ({
+    textDecoration: isActive ? 'underline' : 'none',
+  });
+
   return (
-    <nav>
-      <div className="header navcontainer">
-        <div className="headerlogo navcontainer">
-          <img src={logo} alt="spacehub" className="logoimg" />
-          <h2>Space Travelers&apos; Hub</h2>
+    <>
+      <header className={styles.heading}>
+        <div>
+          <img src={logo} alt="logo" />
+          <h1>Space Travelers&apos; Hub</h1>
         </div>
-        <div className="navcontainer">
-          <Navbar />
-        </div>
-      </div>
-      <hr className="hr" />
-    </nav>
+        <nav>
+          <ul className={styles.navbar}>
+            <li><NavLink style={navLinkStyles} to="/">Rockets</NavLink></li>
+            <li><NavLink style={navLinkStyles} to="/missions">Missions</NavLink></li>
+            <li className={styles.listitem} />
+            <li><NavLink style={navLinkStyles} to="/profile">My Profile</NavLink></li>
+          </ul>
+        </nav>
+      </header>
+      <Outlet />
+    </>
   );
 }
+
+export default Header;

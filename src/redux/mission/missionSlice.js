@@ -1,48 +1,65 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const url = 'https://api.spacexdata.com/v3/missions';
+const Url = 'https://api.spacexdata.com/v3/missions';
 
-export const getMissions = createAsyncThunk('missions/fetch', async () => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+const initialState = {
+  missions: [],
+  isLoading: false,
+  error: undefined,
+};
+
+export const getMissions = createAsyncThunk('missions/getMissions', async (thunkAPI) => {
+  try {
+    const resp = await axios(`${Url}`);
+    const { data } = resp;
+    return data.map((mission) => (
+      {
+        id: mission.mission_id,
+        name: mission.mission_name,
+        description: mission.description,
+        reserved: false,
+      }
+    ));
+  } catch (error) {
+    return thunkAPI.rejectWithValue('something went wrong');
+  }
 });
 
 const missionsSlice = createSlice({
   name: 'missions',
-  initialState: {
-    list: [],
-    isFetching: false,
-  },
+  initialState,
   reducers: {
-    missionUpdated: (state, action) => ({
-      ...state,
-      list: state.list.map((mission) => {
-        if (mission.mission_id === action.payload) {
-          return {
-            ...mission,
-            reserved: !mission.reserved,
-          };
-        }
-        return mission;
-      }),
-    }),
+    joinMission: (state, action) => {
+      const itemId = action.payload;
+      state.missions = state.missions.map((mission) => {
+        if (mission.id !== itemId) return mission;
+        return { ...mission, reserved: true };
+      });
+    },
+    leaveMission: (state, action) => {
+      const itemId = action.payload;
+      state.missions = state.missions.map((mission) => {
+        if (mission.id !== itemId) return mission;
+        return { ...mission, reserved: false };
+      });
+    },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(getMissions.fulfilled, (state, action) => ({
-        ...state,
-        isFetching: false,
-        list: action.payload,
-      }))
-      .addCase(getMissions.pending, (state) => ({
-        ...state,
-        isFetching: true,
-      }));
+    // getDragons
+    builder.addCase(getMissions.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getMissions.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.missions = action.payload;
+    });
+    builder.addCase(getMissions.rejected, (state, action) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    });
   },
 });
 
-export const { missionUpdated } = missionsSlice.actions;
+export const { joinMission, leaveMission } = missionsSlice.actions;
 export default missionsSlice.reducer;
-export const selectMissions = (state) => state.missions.list;
-export const filterReservedMissions = (state) => state.missions.list.filter((e) => e.reserved);
