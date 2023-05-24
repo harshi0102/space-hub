@@ -152,3 +152,34 @@
   color: rgb(64, 62, 62);
   padding: 15px 10px 15px 10px;
 }
+.missioncontainer {
+  width: 100%;
+}
+
+.showmissions {
+  border-radius: 2px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.showitem {
+  border: 2px solid #e1e4e8;
+  color: #212529;
+  padding: 12px 12px 20px;
+  width: 90%;
+}
+
+.profilecontainer {
+  justify-content: space-around;
+  display: flex;
+  text-align: left;
+  width: 80%;
+  margin: auto;
+}
+
+.profilecontainer > div {
+  width: 50%;
+}
