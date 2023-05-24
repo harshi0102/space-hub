@@ -61,12 +61,13 @@
 }
 
 .RocketSection {
-  padding: 0 2.5rem;
+  padding: 0 3.5rem;
 }
 
 .RocketSection > div {
   height: 250px;
   text-align: left;
+  margin-left: 16px;
 }
 
 .rocketlogoimage > img {
