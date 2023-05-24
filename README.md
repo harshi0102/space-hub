@@ -79,9 +79,11 @@ Node.js
 ### Setup
 
 To run the project, follow the steps below:
+```sh
+  cd space-hub
+  git clone git@github.com/harshi0102/space-hub.git
+```
 
-1. git clone git@github.com/harshi0102/space-hub.git
-2. cd space-hub
 
 ### Install
 npm install
