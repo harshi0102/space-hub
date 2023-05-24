@@ -23,6 +23,8 @@
 # 📖 [Spacehub] <a name="about-project"></a>
 
 **[Spacehub]** is a web application for a company that provides commercial and scientific space travel services. The application allow users to book rockets and join selected space missions.
+![image](https://github.com/harshi0102/space-hub/assets/108334376/2c44f038-7a40-4252-9f25-6be367856bf6)
+Check [LIVE-DEMO](https://spacehub-project.onrender.com)
 
 ## 🛠 Built With <a name="REACT, Redux and Webpack"></a>
 
